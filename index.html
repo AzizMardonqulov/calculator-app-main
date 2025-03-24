@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="./style.css">
+  <title>Calculator</title>
+</head>
+<body>
+
+  <div class="calculator">
+      <div class="calculator-top">
+          <div class="calculator-top-lable">Clack</div>
+          <div class="colculator-top-theme">
+              <div class="theme-lable">Theme</div>
+              <div class="theme-switch"><span>1</span> <span>2</span> <span>3</span></div>
+          </div>
+      </div>
+      <div class="calculator-centr">
+        <div class="result">
+          <div id="result" class="result-lable"></div>
+        </div>
+        <div class="count">
+            <div id="count" class="count-number">
+              <div class="count-number-1">7</div>
+              <div class="count-number-1">8</div>
+              <div class="count-number-1">9</div>
+              <div id="del" class="count-number-1 del">del</div>
+              <div class="count-number-1">4</div>
+              <div class="count-number-1">5</div>
+              <div class="count-number-1">6</div>
+              <div class="count-number-1">+</div>
+              <div class="count-number-1">1</div>
+              <div class="count-number-1">2</div>
+              <div class="count-number-1">3</div>
+              <div class="count-number-1">-</div>
+              <div class="count-number-1">.</div>
+              <div class="count-number-1">0</div>
+              <div class="count-number-1">/</div>
+              <div class="count-number-1">*</div>
+              <div id="equal" class="count-buttom-1">=</div>
+              <div id="clear" class="count-buttom-1">Clear</div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <script>
+    let answar = "";
+    let result = document.getElementById("result");
+    let count = document.getElementById("count");
+    let btn = count.querySelectorAll("div")
+    let equal = document.getElementById("equal");
+    let clear = document.getElementById("clear");
+    let del = document.getElementById("del");
+    for(let i = 0; i < btn.length; i++){
+      btn[i].addEventListener("click", function(){
+        let value = this.textContent.trim();
+        if(value === "="){
+          try {
+            answar = eval(answar); // Hisoblash
+            result.textContent = answar;
+          } catch (error) {
+            result.textContent = "Error";
+            answar = "";
+          }
+        }else if (value == "Clear"){
+          answar = "";
+          result.textContent = answar;
+        }else if (value == "del"){
+          answar = answar.slice(0, -1);
+          result.textContent = answar;
+        }
+        else{
+          answar += value;
+          result.textContent=answar;
+        }
+        console.log(answar)
+      })
+    }
+    clear.addEventListener("click" , function(){
+      
+    })
+  </script>
+</body>
+</html>
